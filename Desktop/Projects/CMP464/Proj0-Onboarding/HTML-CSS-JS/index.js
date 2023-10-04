@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const playerDisplay = document.querySelector('.display-player');
     const resetButton = document.querySelector('#reset');
     const announcer = document.querySelector('.announcer');
-    
+
     let board = ['', '', '', '', '', '', '', '', ''];
     let currentPlayer = 'X';
     let isGameActive = true;
@@ -38,13 +38,13 @@ window.addEventListener('DOMContentLoaded', () => {
                 break;
             }
         }
-    
+
     if (roundWon) {
-        announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
-        isGameActive = false;
-        return;
+            announce(currentPlayer === 'X' ? PLAYERX_WON : PLAYERO_WON);
+            isGameActive = false;
+            return;
         }
-    
+
     if (!board.includes(''))
         announce(TIE);
     }
@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 announcer.innerText = 'Tie';
         }
         announcer.classList.remove('hide');
-    }
+    };
 
     const isValidAction = (tile) => {
         if (tile.innerText === 'X' || tile.innerText === 'O'){
@@ -69,9 +69,9 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         return true;
-    }
+    };
 
-    const updateBoard = (index) => {
+    const updateBoard =  (index) => {
         board[index] = currentPlayer;
     }
 
@@ -91,7 +91,7 @@ window.addEventListener('DOMContentLoaded', () => {
             changePlayer();
         }
     }
-
+    
     const resetBoard = () => {
         board = ['', '', '', '', '', '', '', '', ''];
         isGameActive = true;
@@ -109,9 +109,8 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     tiles.forEach( (tile, index) => {
-        tile.addEventListener('click', () => UserActivation(tile, index));
+        tile.addEventListener('click', () => userAction(tile, index));
     });
 
-
     resetButton.addEventListener('click', resetBoard);
-})
+});
